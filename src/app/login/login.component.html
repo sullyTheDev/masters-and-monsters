@@ -1,25 +1,61 @@
-<div class="d-flex justify-content-center align-items-center">
-  <mat-card class="login-card">
-    <mat-card-header>
+<div class="d-flex justify-content-center align-items-center h-75">
+  <div class="login-card">
+    <h3>Masters and Monsters</h3>
+    <h6>A management tool for DM's and Adventurer's</h6>
+    <mat-card class="mt-5 p-4">
       <mat-card-title>
         Login
       </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="d-flex flex-column login-form">
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="accent">LIKE</button>
-        <button mat-button color="primary">SHARE</button>
-      </mat-card-actions>
-  </mat-card>
+      <mat-card-content>
+        <form [formGroup]="form" class="d-flex flex-column login-form">
+          <mat-form-field required="true">
+            <mat-label>Email</mat-label>
+            <input
+              required
+              name="email"
+              type="email"
+              matInput
+              formControlName="email"
+            />
+            <mat-error>
+              An email is required.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              required
+              name="password"
+              type="password"
+              matInput
+              formControlName="password"
+            />
+            <mat-error>
+              A password is required.
+            </mat-error>
+          </mat-form-field>
+        </form>
+        <button
+        [disabled]="form.invalid"
+          mat-raised-button
+          class="w-100 mb-2"
+          color="accent"
+          (click)="loginClicked()"
+        >
+          Login
+        </button>
+        <p class="mb-0">
+          Don't have an account?
+        </p>
+        <button
+          mat-button
+          color="primary"
+          [routerLink]="['/register']"
+          routerLinkActive="router-link-active"
+        >
+          register
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

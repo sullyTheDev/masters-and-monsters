@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -14,7 +14,6 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate() {
-    console.log(this.authService.authenticated);
       if (this.authService.authenticated) {
         return true;
       }
