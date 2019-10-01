@@ -8,14 +8,8 @@ import { User } from 'firebase';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Masters and Monsters';
-  user: User
 
-  constructor(private authService: AuthService) {
+  constructor() {}
 
-  }
-
-  ngOnInit(): void {
-    this.user = this.authService.getCurrentUser()
-  }
+  ngOnInit(): void {}
 }
