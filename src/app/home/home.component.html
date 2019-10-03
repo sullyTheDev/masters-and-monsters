@@ -1,0 +1,88 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 mb-3">
+        <mat-card>
+          <mat-card-header class="info-header">
+            <mat-card-title>
+              Characters
+            </mat-card-title>
+            <mat-icon (click)="charTooltip.toggle()" #charTooltip="matTooltip" matTooltip="Create new Adventurers and Manage your existing ones!">info</mat-icon>
+          </mat-card-header>
+          <mat-card-content class="text-center">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px" y="0px" width="100%" height="80px" viewBox="0 0 80.13 80.13"
+              style="enable-background:new 0 0 80.13 80.13;" xml:space="preserve">
+              <g fill="#636363">
+                <path d="M48.355,17.922c3.705,2.323,6.303,6.254,6.776,10.817c1.511,0.706,3.188,1.112,4.966,1.112
+                 c6.491,0,11.752-5.261,11.752-11.751c0-6.491-5.261-11.752-11.752-11.752C53.668,6.35,48.453,11.517,48.355,17.922z M40.656,41.984
+                 c6.491,0,11.752-5.262,11.752-11.752s-5.262-11.751-11.752-11.751c-6.49,0-11.754,5.262-11.754,11.752S34.166,41.984,40.656,41.984
+                 z M45.641,42.785h-9.972c-8.297,0-15.047,6.751-15.047,15.048v12.195l0.031,0.191l0.84,0.263
+                 c7.918,2.474,14.797,3.299,20.459,3.299c11.059,0,17.469-3.153,17.864-3.354l0.785-0.397h0.084V57.833
+                 C60.688,49.536,53.938,42.785,45.641,42.785z M65.084,30.653h-9.895c-0.107,3.959-1.797,7.524-4.47,10.088
+                 c7.375,2.193,12.771,9.032,12.771,17.11v3.758c9.77-0.358,15.4-3.127,15.771-3.313l0.785-0.398h0.084V45.699
+                 C80.13,37.403,73.38,30.653,65.084,30.653z M20.035,29.853c2.299,0,4.438-0.671,6.25-1.814c0.576-3.757,2.59-7.04,5.467-9.276
+                 c0.012-0.22,0.033-0.438,0.033-0.66c0-6.491-5.262-11.752-11.75-11.752c-6.492,0-11.752,5.261-11.752,11.752
+                 C8.283,24.591,13.543,29.853,20.035,29.853z M30.589,40.741c-2.66-2.551-4.344-6.097-4.467-10.032
+                 c-0.367-0.027-0.73-0.056-1.104-0.056h-9.971C6.75,30.653,0,37.403,0,45.699v12.197l0.031,0.188l0.84,0.265
+                 c6.352,1.983,12.021,2.897,16.945,3.185v-3.683C17.818,49.773,23.212,42.936,30.589,40.741z" />
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+            </svg>
+            <button class="w-75 mt-4" mat-raised-button color="accent" [routerLink]="['./characters']">Characters</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+        <mat-card>
+          <mat-card-header class="info-header">
+            <mat-card-title>
+              Adventures
+            </mat-card-title>
+            <mat-icon (click)="advTooltip.toggle()" #advTooltip="matTooltip" matTooltip="Create and manage game sessions">info</mat-icon>
+          </mat-card-header>
+          <mat-card-content class="text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+              id="Layer_1" x="0px" y="0px" width="100%" height="80px" viewBox="0 0 512 512"
+              enable-background="new 0 0 512 512" xml:space="preserve">
+              <g fill="#636363">
+                <path
+                  d="M483.932,47.29c-26.72,21.71-55.73,42.46-89.55,51.16c-20.05,5.17-41.561,4.15-61.05-2.83   c-32.49-11.5-59.341-34.58-91.771-46.22c-19.03-7.16-39.91-9.12-59.95-5.83c-29.68,4.86-56.739,19.26-81.62,35.58   c-0.1,86.75-0.039,173.51-0.029,260.27c25.46-16.641,53.189-31.38,83.63-35.891c21.93-3.389,44.66,0.061,64.97,8.871   c27.48,11.369,51.18,30.14,78.811,41.209c19.33,7.971,41,10.641,61.529,6.311c36.04-7.58,66.9-29.439,94.97-52.29   C484.092,220.859,483.972,134.07,483.932,47.29z" />
+                <path
+                  d="M73.5,426.784V73.216c9.064-6.325,15-16.824,15-28.716c0-19.33-15.67-35-35-35s-35,15.67-35,35   c0,11.892,5.936,22.391,15,28.716v353.568c-9.064,6.325-15,16.824-15,28.716c0,19.33,15.67,35,35,35s35-15.67,35-35   C88.5,443.608,82.565,433.109,73.5,426.784z" />
+              </g>
+            </svg>
+            <button class="w-75 mt-4" mat-raised-button color="accent">Adventures</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>

@@ -26,3 +26,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       display: flex;
       justify-content: space-between;
   }
+  .fill-flex {
+    flex: 1 1 auto
+}

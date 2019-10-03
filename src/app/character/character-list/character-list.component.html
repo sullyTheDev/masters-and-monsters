@@ -1,0 +1,46 @@
+<div class="my-3">
+  <a routerLink="/dashboard" mat-icon-button>
+    <mat-icon routerLink="../">keyboard_backspace</mat-icon>
+  </a>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+      <mat-card>
+        <mat-card-header>
+          <div class="character-img" mat-card-avatar></div>
+          <mat-card-title>
+            character name
+          </mat-card-title>
+          <mat-card-subtitle>
+            race or faction
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <h3 mat-subheader>Base Stats</h3>
+            <mat-list-item class="list-item">
+              <mat-icon mat-list-icon>favorite</mat-icon>
+              <h4 mat-line>Health</h4>
+            </mat-list-item>
+            <mat-list-item class="list-item">
+              <mat-icon mat-list-icon>grade</mat-icon>
+              <h4 mat-line>Experience</h4>
+            </mat-list-item>
+            <mat-list-item class="list-item">
+              <mat-icon mat-list-icon>person_add</mat-icon>
+              <h4 mat-line>Level</h4>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Show Details</button>
+            <span class="fill-flex"></span>
+            <button mat-button color="warn">delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

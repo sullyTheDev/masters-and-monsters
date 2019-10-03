@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { Router, CanActivateChild } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivateChild {
   constructor(
     public afAuth: AngularFireAuth,
     public authService: AuthService,
     private router: Router
   ) {}
 
-  canActivate() {
+  canActivateChild() {
       if (this.authService.authenticated) {
         return true;
       }

@@ -14,13 +14,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './auth.service';
+import { CharacterListComponent } from './character/character-list/character-list.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    CharacterListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
