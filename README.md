@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 
+## Initial Setup
+
+You will need to re-create the `environment` folder containing the `environment.ts` and `environment.prod.ts` files
+and add the `firebaseConfig` value inside the object
+
+*NOTE* you can get the firebaseConfig value from https://console.firebase.google.com/u/1/project/masters-and-monsters/overview 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
