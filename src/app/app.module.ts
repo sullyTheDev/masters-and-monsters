@@ -16,6 +16,8 @@ import { MaterialModule } from './material/material.module';
 import { AuthService } from './auth.service';
 import { CharacterListComponent } from './character/character-list/character-list.component';
 import { HomeComponent } from './home/home.component';
+import { CharacterDetailComponent } from './character/character-detail/character-detail.component';
+import { CharacterCreateComponent } from './character/character-create/character-create.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HomeComponent } from './home/home.component';
     RegisterComponent,
     DashboardComponent,
     CharacterListComponent,
-    HomeComponent
+    HomeComponent,
+    CharacterDetailComponent,
+    CharacterCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,7 @@ import { HomeComponent } from './home/home.component';
     MaterialModule
   ],
   providers: [],
+  entryComponents: [CharacterCreateComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,17 +7,19 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CharacterListComponent } from './character/character-list/character-list.component';
 import { HomeComponent } from './home/home.component';
+import { CharacterCreateComponent } from './character/character-create/character-create.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'dashboard', component: DashboardComponent, canActivateChild: [AuthGuard], children: [
+    path: 'dashboard', component: DashboardComponent, children: [
       { path: '', component: HomeComponent },
       {
         path: 'characters', children: [
-          { path: '', component: CharacterListComponent }
+          { path: '', component: CharacterListComponent },
+          { path: 'create', component: CharacterCreateComponent }
         ]
       }
     ]
