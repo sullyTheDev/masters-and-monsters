@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   user: firebase.User = null
-  constructor(private afAuth: AngularFireAuth, private router: Router){
+  constructor(public afAuth: AngularFireAuth, private router: Router){
     afAuth.authState.subscribe(x => {
       this.user = x;
     });
@@ -21,15 +21,18 @@ export class AuthService {
   }
 
   loginWithEmailAndPassword(email: string, password: string ) {
+    this.afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
     return from(this.afAuth.auth.signInWithEmailAndPassword(email, password)).pipe(tap(x => this.user = x.user));
   }
 
   registerWithEmailAndPassword(email: string, password: string) {
+    this.afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
     return from(this.afAuth.auth.createUserWithEmailAndPassword(email, password)).pipe(tap(x => this.user = x.user));
   }
 
   getCurrentUser() {
-    return this.user ? this.user : null;
+    
+    return this.afAuth.auth.currentUser
   }
 
   signOutCurrentUser() {

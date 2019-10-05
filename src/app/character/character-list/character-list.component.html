@@ -1,4 +1,4 @@
-<div class="my-3 mx-3">
+<div class="mx-3 toolbar-margin">
   <a routerLink="/dashboard" mat-icon-button>
     <mat-icon >keyboard_arrow_left</mat-icon>
     Back
@@ -7,116 +7,46 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 mb-3">
+    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 mb-3" *ngFor="let char of characters | async">
       <mat-card>
         <mat-card-header>
           <div class="character-img" mat-card-avatar></div>
           <mat-card-title>
-            character name
+            {{char.name}}
           </mat-card-title>
           <mat-card-subtitle>
-            race or faction
+            {{char.race}}
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <mat-list>
             <h3 mat-subheader>Base Stats</h3>
-            <mat-list-item class="list-item">
-              <mat-icon mat-list-icon>favorite</mat-icon>
-              <h4 mat-line>Health</h4>
-            </mat-list-item>
-            <mat-list-item class="list-item">
-              <mat-icon mat-list-icon>grade</mat-icon>
-              <h4 mat-line>Experience</h4>
-            </mat-list-item>
-            <mat-list-item class="list-item">
-              <mat-icon mat-list-icon>person_add</mat-icon>
-              <h4 mat-line>Level</h4>
+            <mat-list-item *ngFor="let attr of baseCharacterStats | async" class="list-item">
+              <mat-icon (click)="charTooltip.toggle()" #charTooltip="matTooltip" matTooltip="{{attr.name}}" mat-list-icon>{{attr.iconSelector}}</mat-icon>
+              <h4 mat-line>{{char.attributes[attr.name]}}</h4>
             </mat-list-item>
           </mat-list>
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button color="primary">Show Details</button>
             <span class="fill-flex"></span>
-            <button mat-button color="warn">delete</button>
+            <button mat-button color="warn" (click)="deleteChar(char.characterId)">delete</button>
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12  mb-3">
-        <mat-card>
-          <mat-card-header>
-            <div class="character-img" mat-card-avatar></div>
-            <mat-card-title>
-              character name
-            </mat-card-title>
-            <mat-card-subtitle>
-              race or faction
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-list>
-              <h3 mat-subheader>Base Stats</h3>
-              <mat-list-item class="list-item">
-                <mat-icon mat-list-icon>favorite</mat-icon>
-                <h4 mat-line>Health</h4>
-              </mat-list-item>
-              <mat-list-item class="list-item">
-                <mat-icon mat-list-icon>grade</mat-icon>
-                <h4 mat-line>Experience</h4>
-              </mat-list-item>
-              <mat-list-item class="list-item">
-                <mat-icon mat-list-icon>person_add</mat-icon>
-                <h4 mat-line>Level</h4>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-          <mat-card-actions>
-              <button mat-raised-button color="primary">Show Details</button>
-              <span class="fill-flex"></span>
-              <button mat-button color="warn">delete</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-      <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12  mb-3">
-          <mat-card>
-            <mat-card-header>
-              <div class="character-img" mat-card-avatar></div>
-              <mat-card-title>
-                character name
-              </mat-card-title>
-              <mat-card-subtitle>
-                race or faction
-              </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-list>
-                <h3 mat-subheader>Base Stats</h3>
-                <mat-list-item class="list-item">
-                  <mat-icon mat-list-icon>favorite</mat-icon>
-                  <h4 mat-line>Health</h4>
-                </mat-list-item>
-                <mat-list-item class="list-item">
-                  <mat-icon mat-list-icon>grade</mat-icon>
-                  <h4 mat-line>Experience</h4>
-                </mat-list-item>
-                <mat-list-item class="list-item">
-                  <mat-icon mat-list-icon>person_add</mat-icon>
-                  <h4 mat-line>Level</h4>
-                </mat-list-item>
-              </mat-list>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="primary">Show Details</button>
-                <span class="fill-flex"></span>
-                <button mat-button color="warn">delete</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-  </div>
-
+   </div> 
 </div>
-<div class="fixed-bottom mb-3 mx-4 d-flex flex-row-reverse">
+<div class="fab mb-3 mr-3">
   <a mat-fab color="accent" routerLink="./create" routerLinkActive="router-link-active" >
       <mat-icon>add</mat-icon>
   </a>
 </div>
+
+<ng-template #confirmDel let-data>
+    <h2 mat-dialog-title>Delete</h2>
+    <mat-dialog-content>Are you sure you want to retire {{data.charName}}?</mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>No</button>
+      <button mat-button color="warn" [mat-dialog-close]="true">Yes</button>
+    </mat-dialog-actions>
+</ng-template>

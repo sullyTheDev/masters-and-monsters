@@ -1,4 +1,4 @@
-<div class="my-3 mx-3">
+<div class="mx-3 toolbar-margin">
     <a routerLink="../" mat-icon-button>
       <mat-icon>keyboard_arrow_left</mat-icon>
       Back
@@ -17,7 +17,15 @@
                   <form class="d-flex flex-column mr-5" [formGroup]="formGroup1">
                     <ng-template matStepLabel>Name your character</ng-template>
                     <mat-form-field [hideRequiredMarker]="true">
-                      <input matInput placeholder="character name" formControlName="charName" required>
+                      <input matInput placeholder="character name" formControlName="name" required>
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true">
+                      <mat-label>Character Race</mat-label>
+                      <mat-select formControlName="race" required>
+                        <mat-option *ngFor="let race of charRaces | async" [value]="race.name">
+                          {{race.name}}
+                        </mat-option>
+                      </mat-select>
                     </mat-form-field>
                     <br>
                     <button class="w-25" mat-button matStepperNext>Next</button>
@@ -26,14 +34,23 @@
                 <mat-step [stepControl]="formGroup2">
                     <form class="d-flex flex-column justify-content-start" [formGroup]="formGroup2">
                       <ng-template matStepLabel>Give your character stats</ng-template>
-                      <mat-form-field [hideRequiredMarker]="true" *ngFor="let attr of baseAttributes | async">
+                      <mat-form-field [hideRequiredMarker]="true" *ngFor="let attr of customizableAttributes | async">
                         <span matPrefix><mat-icon>{{attr.iconSelector}}</mat-icon> &nbsp;</span>
                         <input type="number" matInput [placeholder]="attr.name" [formControlName]="attr.name" required>
+                        <button matSuffix mat-icon-button (click)=randomStat(attr.name)>
+                            <mat-icon>shuffle</mat-icon>
+                        </button>
                       </mat-form-field>
                       <br>
                       <button mat-button matStepperNext>Next</button>
                     </form>
                   </mat-step>
+                  <mat-step>
+                        <ng-template matStepLabel>Save your character</ng-template>
+                        <div class="mt-2 d-flex justify-content-between">
+                            <button mat-raised-button color="accent" (click)="createCharacter()">Save</button>
+                        </div>
+                    </mat-step>
               </mat-vertical-stepper>
         </mat-card-content>
       </mat-card>

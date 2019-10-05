@@ -4,5 +4,5 @@ export interface Character {
     characterId: string
     name: string;
     race: string;
-    attributes: CharacterAttribute[]
+    attributes: {[key: string]: number}
 }
