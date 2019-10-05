@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 mb-3 toolbar-margin">
+    <div class="row justify-content-center toolbar-margin-extended">
+      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 mb-3">
         <mat-card>
           <mat-card-header class="info-header">
             <mat-card-title>
@@ -80,7 +80,7 @@
                   d="M73.5,426.784V73.216c9.064-6.325,15-16.824,15-28.716c0-19.33-15.67-35-35-35s-35,15.67-35,35   c0,11.892,5.936,22.391,15,28.716v353.568c-9.064,6.325-15,16.824-15,28.716c0,19.33,15.67,35,35,35s35-15.67,35-35   C88.5,443.608,82.565,433.109,73.5,426.784z" />
               </g>
             </svg>
-            <button class="w-75 mt-4" mat-raised-button color="accent">Adventures</button>
+                <button class="w-75 mt-4" mat-raised-button color="accent" [routerLink]="['./adventures']" routerLinkActive="router-link-active" >Adventures</button>
           </mat-card-content>
         </mat-card>
       </div>

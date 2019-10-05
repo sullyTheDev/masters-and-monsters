@@ -8,6 +8,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CharacterListComponent } from './character/character-list/character-list.component';
 import { HomeComponent } from './home/home.component';
 import { CharacterCreateComponent } from './character/character-create/character-create.component';
+import { AdventuresListComponent } from './adventures/adventures-list/adventures-list.component';
+import { SessionComponent } from './adventures/session/session.component';
+import { CreateAdventureComponent } from './adventures/create-adventure/create-adventure.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,6 +23,13 @@ export const rootRouterConfig: Routes = [
         path: 'characters', children: [
           { path: '', component: CharacterListComponent },
           { path: 'create', component: CharacterCreateComponent }
+        ]
+      },
+      {
+        path: 'adventures', children: [
+          { path: '', component: AdventuresListComponent },
+          { path: 'join', component: SessionComponent }, 
+          { path: 'create', component: CreateAdventureComponent }
         ]
       }
     ]

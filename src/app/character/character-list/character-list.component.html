@@ -6,6 +6,7 @@
 </div>
 
 <div class="container">
+    <h4 class="my-2">Characters</h4>
   <div class="row">
     <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 mb-3" *ngFor="let char of characters | async">
       <mat-card>
@@ -30,7 +31,7 @@
         <mat-card-actions>
             <button mat-raised-button color="primary">Show Details</button>
             <span class="fill-flex"></span>
-            <button mat-button color="warn" (click)="deleteChar(char.characterId)">delete</button>
+            <button mat-button color="warn" (click)="deleteChar(char)">delete</button>
         </mat-card-actions>
       </mat-card>
     </div>

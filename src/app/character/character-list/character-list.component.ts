@@ -6,20 +6,23 @@ import { Character } from 'src/app/models/character.model';
 import { CharacterAttribute } from 'src/app/models/character-attribute.model';
 import { MatDialog } from '@angular/material';
 import { takeUntil } from 'rxjs/operators';
+import { SmartListener } from 'src/app/models/smartListener';
 @Component({
   selector: 'app-character-list',
   templateUrl: './character-list.component.html',
   styleUrls: ['./character-list.component.css']
 })
-export class CharacterListComponent implements OnInit {
+export class CharacterListComponent extends SmartListener implements OnInit {
   user: firebase.User;
   characters: Observable<Character[]>;
   baseCharacterStats: Observable<CharacterAttribute[]>;
 
   @ViewChild('confirmDel') confirmDel: TemplateRef<any>;
-  constructor(private authService: AuthService, private db: AngularFirestore, private dialog: MatDialog) { }
+  constructor(private authService: AuthService, private db: AngularFirestore, private dialog: MatDialog) {
+    super();
+  }
   ngOnInit() {
-    this.authService.afAuth.authState.subscribe(x => {
+    this.authService.afAuth.authState.pipe(takeUntil(this.listener)).subscribe(x => {
       this.user = x ? x : null;
       this.characters = this.db.collection<Character>('characters', opts => opts.where(this.user.uid, '==', true)).valueChanges(); 
     });
@@ -27,18 +30,13 @@ export class CharacterListComponent implements OnInit {
     this.baseCharacterStats = this.db.collection<CharacterAttribute>('character-attributes', opts => opts.where('base', '==', true).orderBy('order')).valueChanges();
   }
 
-  deleteChar(charId: string) {
-    let listen = new Subject();
-    this.db.doc<Character>(`characters/${charId}`).valueChanges().pipe(takeUntil(listen)).subscribe(x => {
-      const diagRef = this.dialog.open(this.confirmDel, {data: {charName: x.name}});
+  deleteChar(char: Character) {
+      const diagRef = this.dialog.open(this.confirmDel, {data: {charName: char.name}});
       diagRef.afterClosed().subscribe(x => {
         if (x) {
-          this.db.doc<Character>(`characters/${charId}`).delete();
-          listen.next();
-          listen.complete();
+          this.db.doc<Character>(`characters/${char.characterId}`).delete();
         }
-      })
-    })
+    });
   }
 
 }

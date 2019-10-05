@@ -18,6 +18,9 @@ import { CharacterListComponent } from './character/character-list/character-lis
 import { HomeComponent } from './home/home.component';
 import { CharacterDetailComponent } from './character/character-detail/character-detail.component';
 import { CharacterCreateComponent } from './character/character-create/character-create.component';
+import { AdventuresListComponent } from './adventures/adventures-list/adventures-list.component';
+import { SessionComponent } from './adventures/session/session.component';
+import { CreateAdventureComponent } from './adventures/create-adventure/create-adventure.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { CharacterCreateComponent } from './character/character-create/character
     CharacterListComponent,
     HomeComponent,
     CharacterDetailComponent,
-    CharacterCreateComponent
+    CharacterCreateComponent,
+    AdventuresListComponent,
+    SessionComponent,
+    CreateAdventureComponent
   ],
   imports: [
     BrowserModule,

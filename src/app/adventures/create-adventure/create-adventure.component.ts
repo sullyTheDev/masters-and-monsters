@@ -1,21 +1,22 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatDialogRef, MatSnackBar } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { CharacterAttribute } from 'src/app/models/character-attribute.model';
-import { Observable, Subject } from 'rxjs';
 import { CharacterRace } from 'src/app/models/character-race.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { takeUntil, take } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { SmartListener } from 'src/app/models/smartListener';
 
 @Component({
-  selector: 'app-character-create',
-  templateUrl: './character-create.component.html',
-  styleUrls: ['./character-create.component.css']
+  selector: 'app-create-adventure',
+  templateUrl: './create-adventure.component.html',
+  styleUrls: ['./create-adventure.component.css']
 })
-export class CharacterCreateComponent extends SmartListener implements OnInit {
+export class CreateAdventureComponent extends SmartListener implements OnInit {
+
   formGroup1: FormGroup;
   formGroup2: FormGroup;
   customizableAttributes: Observable<CharacterAttribute[]>
@@ -65,6 +66,10 @@ export class CharacterCreateComponent extends SmartListener implements OnInit {
       this.snack.open('Your character has been saved!', null, {duration: 2000});
       this.router.navigate(['/dashboard/characters']);
     });
+  }
+
+  generateRandomCode(): string {
+    return (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase()
   }
 
 }

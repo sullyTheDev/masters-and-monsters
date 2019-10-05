@@ -33,6 +33,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .toolbar-margin {
  padding-top: 80px;
 }
+.toolbar-margin-extended {
+  padding-top: 140px;
+  padding-bottom: 50px;
+ }
 
 .fab {
   position: fixed;

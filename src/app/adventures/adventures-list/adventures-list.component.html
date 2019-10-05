@@ -1,0 +1,46 @@
+<div class="mx-3 toolbar-margin">
+    <a routerLink="/dashboard" mat-icon-button>
+      <mat-icon >keyboard_arrow_left</mat-icon>
+      Back
+    </a>
+  </div>
+
+  <div class="container">
+      <h4 class="my-2">Adventures</h4>
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 mb-3" *ngFor="let adv of sessions | async">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+                {{adv.name}}
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="click(adv)">Start Adventure</button>
+                <span class="fill-flex"></span>
+                <button mat-button color="warn" (click)="deleteSession(adv)">delete</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+       </div> 
+    </div>
+
+  <div class="fab mb-3 mr-3">
+      <a mat-fab class="mb-2" color="accent"  matTooltip="join a friend's adventure!" routerLink="./join" routerLinkActive="router-link-active" >
+          <mat-icon>input</mat-icon>
+      </a>
+      <a mat-fab color="accent" matTooltip="create a new adventure!" routerLink="./create" routerLinkActive="router-link-active" >
+        <mat-icon>add</mat-icon>
+    </a>
+    </div>
+
+    <ng-template #confirmDel let-data>
+        <h2 mat-dialog-title>Delete</h2>
+        <mat-dialog-content>Are you sure you want to delete {{data.sesName}}?</mat-dialog-content>
+        <mat-dialog-actions>
+          <button mat-button mat-dialog-close>No</button>
+          <button mat-button color="warn" [mat-dialog-close]="true">Yes</button>
+        </mat-dialog-actions>
+    </ng-template>
